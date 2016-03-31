@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+  h1= theAlbum.artist
+  h1= theAlbum.name
+  h1= theAlbum.genre
+  h1= theAlbum.stars
+
+  form(action="/edit", method="post")
+    div
+      a(href="/albums/" + theAlbum.id + "/edit") Edit

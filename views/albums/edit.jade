@@ -1,0 +1,39 @@
+extends ../layout
+
+block content
+  h1 Update Album
+
+  form(action="/albums/" + theAlbum.id + "/?_method=PUT", method="POST")
+
+    div
+      label(for="artist_name") Artist:
+      input(type="text" name="artist_name" value=theAlbum.artist)
+
+    div
+      label(for="album_name") Album:
+      input(type="text" name="album_name" value=theAlbum.name)
+
+    div
+      | Genre:
+      select
+        each val in options
+          option(value=val selected=theAlbum.genre == val)= val
+
+
+    div
+      label(for="stars") Stars:
+      | 1
+      input(type="radio" name="stars" value="1")
+      input(type="radio" name="stars" value="2")
+      input(type="radio" name="stars" value="3")
+      input(type="radio" name="stars" value="4")
+      input(type="radio" name="stars" value="5")
+      | 5
+
+    div
+      input(type="checkbox" name="explicit-lyrics")
+      | Contains Explicit Lyrics
+
+    div
+      input(type="submit" value="Update Album")
+      a(href="/albums/edit") cancel
