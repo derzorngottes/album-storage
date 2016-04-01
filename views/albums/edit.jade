@@ -19,20 +19,21 @@ block content
         each val in options
           option(value=val selected=theAlbum.genre == val)= val
 
-
     div
-      label(for="stars") Stars:
+      | Stars:
       | 1
-      input(type="radio" name="stars" value="1")
-      input(type="radio" name="stars" value="2")
-      input(type="radio" name="stars" value="3")
-      input(type="radio" name="stars" value="4")
-      input(type="radio" name="stars" value="5")
+      each val in [1,2,3,4,5]
+        input(type="radio" name="stars" value=val checked=theAlbum.stars==val)
       | 5
 
+
     div
-      input(type="checkbox" name="explicit-lyrics")
-      | Contains Explicit Lyrics
+      if(theAlbum.explicit === true)
+        input(type="checkbox" name="explicit" checked=true)
+        | Contains Explicit Lyrics
+      else
+        input(type="checkbox" name="explicit")
+        | Contains Explicit Lyrics
 
     div
       input(type="submit" value="Update Album")

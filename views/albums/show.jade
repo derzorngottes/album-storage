@@ -5,7 +5,13 @@ block content
   h1= theAlbum.name
   h1= theAlbum.genre
   h1= theAlbum.stars
+  if(theAlbum.explicit === true)
+    h2 Contains explicit lyrics
 
   form(action="/edit", method="post")
     div
       a(href="/albums/" + theAlbum.id + "/edit") Edit
+
+  form(action="/delete", method="post")
+    div
+      a(href="/albums/" + theAlbum.id + "/delete") Delete
